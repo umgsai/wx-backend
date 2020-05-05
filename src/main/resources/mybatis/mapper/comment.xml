@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 必须与接口的全类名保持一致-->
+<mapper namespace="com.umgsai.wx.backend.dao.CommentMapper">
+    <!--id必须与接口对应的功能的名称保持一致-->
+    <resultMap id="BaseResultMap" type="com.umgsai.wx.backend.dao.data.CommentDO">
+        <result column="id" property="id"/>
+        <result column="comment_id" property="commentId"/>
+        <result column="article_id" property="articleId"/>
+        <result column="comment_content" property="commentContent"/>
+        <result column="author" property="author"/>
+        <result column="author_avatar" property="authorAvatar"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        comment_id,
+        article_id,
+        comment_content,
+        author,
+        author_avatar,
+        create_time,
+        update_time
+    </sql>
+
+    <sql id="setField">
+        <set>
+            <if test='null != commentId'>comment_id = #{commentId},</if>
+            <if test='null != articleId'>article_id = #{articleId},</if>
+            <if test='null != commentContent'>comment_content = #{commentContent},</if>
+            <if test='null != author'>author = #{author},</if>
+            <if test='null != authorAvatar'>author_avatar = #{authorAvatar},</if>
+            <if test='null != createTime'>create_time = #{createTime},</if>
+            <if test='null != updateTime'>update_time = #{updateTime}</if>
+        </set>
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id"
+            parameterType="com.umgsai.wx.backend.dao.data.CommentDO">
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+            SELECT @@IDENTITY
+        </selectKey>
+        INSERT INTO t_comment
+        <include refid="setField"/>
+    </insert>
+
+    <!--sql语句中的#也可以用$,但是#可以避免sql注入-->
+    <!--指定单条查询-->
+    <select id="getById" resultMap="BaseResultMap">
+        select * from t_comment where id = #{id}
+    </select>
+
+    <select id="getByArticleId" resultMap="BaseResultMap">
+        select * from t_comment where article_id = #{articleId}
+    </select>
+
+    <!--删-->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from t_comment where id = #{id}
+    </delete>
+
+    <!--改-->
+    <update id="update" parameterType="com.umgsai.wx.backend.dao.data.CommentDO">
+        UPDATE t_comment
+        <include refid="setField"/>
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+        select * from t_comment order by id desc limit #{offset}, #{pageSize}
+    </select>
+
+    <select id="queryCount" resultType="int">
+        select count(*) from t_comment
+    </select>
+</mapper>
