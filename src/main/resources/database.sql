@@ -1,4 +1,4 @@
-create databases wx_backend;
+create database wx_backend;
 
 drop table if exists t_article;
 CREATE TABLE `t_article`
