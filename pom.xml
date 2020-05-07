@@ -12,6 +12,7 @@
     <artifactId>wx-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>wx-backend</name>
+	<packaging>jar</packaging>
     <description>weixin mini program backend service</description>
 
     <properties>
