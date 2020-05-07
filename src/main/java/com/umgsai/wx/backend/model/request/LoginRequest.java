@@ -1,4 +1,4 @@
-package com.umgsai.wx.backend.controller.request;
+package com.umgsai.wx.backend.model.request;
 
 import lombok.Data;
 
