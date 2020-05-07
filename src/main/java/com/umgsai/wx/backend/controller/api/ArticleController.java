@@ -1,6 +1,6 @@
 package com.umgsai.wx.backend.controller.api;
 
-import com.umgsai.wx.backend.controller.request.QueryArticleListRequest;
+import com.umgsai.wx.backend.model.request.QueryArticleListRequest;
 import com.umgsai.wx.backend.manager.ArticleManager;
 import com.umgsai.wx.backend.model.Article;
 import com.umgsai.wx.backend.model.PageResult;

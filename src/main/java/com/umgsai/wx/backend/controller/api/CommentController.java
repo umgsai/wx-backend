@@ -1,7 +1,7 @@
 package com.umgsai.wx.backend.controller.api;
 
-import com.umgsai.wx.backend.controller.request.AddCommentRequest;
-import com.umgsai.wx.backend.controller.request.QueryCommentListRequest;
+import com.umgsai.wx.backend.model.request.AddCommentRequest;
+import com.umgsai.wx.backend.model.request.QueryCommentListRequest;
 import com.umgsai.wx.backend.manager.CommentManager;
 import com.umgsai.wx.backend.model.Comment;
 import com.umgsai.wx.backend.model.Response;
