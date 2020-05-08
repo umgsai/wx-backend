@@ -1,5 +1,3 @@
-create database wx_backend;
-
 drop table if exists t_article;
 CREATE TABLE `t_article`
 (
@@ -19,9 +17,23 @@ CREATE TABLE `t_article`
     KEY `idx_update_time` (`update_time`)
 ) ENGINE = InnoDB
   CHARSET = utf8mb4 COMMENT '文章表';
-  INSERT INTO t_article (id, article_id, title, thumbnail, article_content, author, visits, likes, create_time, update_time) VALUES (1, 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxxx', '卫健委提醒返程高峰做好个人防护', 'https://res1.eqh5.com/o_1e4cqkheepj9cra1hqo16kus0b2h.jpg?imageMogr2/auto-orient/thumbnail/480x930%3E/format/webp', '5日，国家卫生健康委新闻发言人、宣传司副司长米锋表示，5月4日，全国连续两天无新增本土确诊和疑似病例，新增治愈出院病例87例，占上一日现有确诊病例的近五分之一。今天是五一假期最后一天，各地迎来返程高峰，应始终做好个人防护，关注身体状况，保持适当距离，减少人员聚集。', 'shang', 6, 0, '2020-05-05 13:25:03', '2020-05-05 16:33:15');
-INSERT INTO t_article (id, article_id, title, thumbnail, article_content, author, visits, likes, create_time, update_time) VALUES (2, 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx1', '经济活动重启太快，美国每日将新增20万病例？', 'https://res1.eqh5.com/o_1e4cro1fj1hu418191lm1f0ng7m3g.png?imageMogr2/auto-orient/thumbnail/480x930%3E/format/webp', '进入5月以来，美国各州逐步放宽新冠疫情期间的限制措施，越来越多的商家恢复营业。但多个模型预测称，过早放松警惕将导致确诊病例和死亡人数激增。', 'shang', 7, 5, '2020-05-05 13:25:03', '2020-05-05 16:31:49');
-INSERT INTO t_article (id, article_id, title, thumbnail, article_content, author, visits, likes, create_time, update_time) VALUES (3, 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', '黑龙江近3千公里边境防疫：2850余名护边员投入一线巡防', 'https://res1.eqh5.com/o_1e4cqkheepj9cra1hqo16kus0b2h.jpg?imageMogr2/auto-orient/thumbnail/480x930%3E/format/webp', '面对境外新冠肺炎疫情输入，黑龙江省在近3000公里的边境线上构建了多层次“防火墙”。
+
+INSERT INTO t_article (id, article_id, title, thumbnail, article_content, author, visits, likes, create_time,
+                       update_time)
+VALUES (1, 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxxx', '卫健委提醒返程高峰做好个人防护',
+        'https://res1.eqh5.com/o_1e4cqkheepj9cra1hqo16kus0b2h.jpg?imageMogr2/auto-orient/thumbnail/480x930%3E/format/webp',
+        '5日，国家卫生健康委新闻发言人、宣传司副司长米锋表示，5月4日，全国连续两天无新增本土确诊和疑似病例，新增治愈出院病例87例，占上一日现有确诊病例的近五分之一。今天是五一假期最后一天，各地迎来返程高峰，应始终做好个人防护，关注身体状况，保持适当距离，减少人员聚集。',
+        'shang', 6, 0, '2020-05-05 13:25:03', '2020-05-05 16:33:15');
+INSERT INTO t_article (id, article_id, title, thumbnail, article_content, author, visits, likes, create_time,
+                       update_time)
+VALUES (2, 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx1', '经济活动重启太快，美国每日将新增20万病例？',
+        'https://res1.eqh5.com/o_1e4cro1fj1hu418191lm1f0ng7m3g.png?imageMogr2/auto-orient/thumbnail/480x930%3E/format/webp',
+        '进入5月以来，美国各州逐步放宽新冠疫情期间的限制措施，越来越多的商家恢复营业。但多个模型预测称，过早放松警惕将导致确诊病例和死亡人数激增。', 'shang', 7, 5, '2020-05-05 13:25:03',
+        '2020-05-05 16:31:49');
+INSERT INTO t_article (id, article_id, title, thumbnail, article_content, author, visits, likes, create_time,
+                       update_time)
+VALUES (3, 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', '黑龙江近3千公里边境防疫：2850余名护边员投入一线巡防',
+        'https://res1.eqh5.com/o_1e4cqkheepj9cra1hqo16kus0b2h.jpg?imageMogr2/auto-orient/thumbnail/480x930%3E/format/webp', '面对境外新冠肺炎疫情输入，黑龙江省在近3000公里的边境线上构建了多层次“防火墙”。
 
 “连日来，黑龙江出入境边防检查总站深化边境封控措施，强化通道设卡、驻点执勤、边境巡逻，查处违边行政案件36起，处罚45人；清查辖区各类船只2400余艘，纳入管控视线，有力维护了边境生产作业秩序；组织2850余名护边员投入一线巡防，增强了边境封控力量，确保了边境地区的安全稳定。”
 
@@ -45,10 +57,11 @@ INSERT INTO t_article (id, article_id, title, thumbnail, article_content, author
 
 王文涛当时强调，要切实承担起习近平总书记赋予黑龙江省维护国家“五大安全”特别是国防安全、边境安全的重要职责，立足点线面各环节有效结合、各方面协调联动，党政军警民共同携手，建立起与疫情防控常态化相适应的边境管控机制，合力做好防范境外疫情输入和管边控边工作。
 
-而黑龙江省应对新冠肺炎疫情工作领导小组指挥部4月13日正式向各市（地）指挥部下发的通知要求，充分发动人民群众检举揭发相关问题线索，此次举报范围是通过陆路、水路非法偷越国（边）境进入黑龙江省的人员。中，对非法越境犯罪线索一经查实，将给予举报人人民币3000元奖励；如边民自行抓获并交由有关部门处置的，一次性奖励人民币5000元。', 'shang', 6, 25, '2020-05-05 13:25:03', '2020-05-05 16:33:21');
+而黑龙江省应对新冠肺炎疫情工作领导小组指挥部4月13日正式向各市（地）指挥部下发的通知要求，充分发动人民群众检举揭发相关问题线索，此次举报范围是通过陆路、水路非法偷越国（边）境进入黑龙江省的人员。中，对非法越境犯罪线索一经查实，将给予举报人人民币3000元奖励；如边民自行抓获并交由有关部门处置的，一次性奖励人民币5000元。',
+        'shang', 6, 25, '2020-05-05 13:25:03', '2020-05-05 16:33:21');
 
 
-drop table if exists t_comment;
+
 CREATE TABLE `t_comment`
 (
     `id`              bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
@@ -67,11 +80,78 @@ CREATE TABLE `t_comment`
 ) ENGINE = InnoDB
   CHARSET = utf8mb4 COMMENT '文章评论表';
 
-  INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time) VALUES (1, '90f450c5-ea8f-4807-8779-66dec870ce16', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'ddddddddddddddddddd', '商商-77', '', '2020-05-05 14:58:49', '2020-05-05 14:58:49');
-INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time) VALUES (2, '5b930b8a-245d-47d6-b811-356679547022', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'ssssssssssssssssssss', '商商-77', 'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132', '2020-05-05 14:59:25', '2020-05-05 14:59:25');
-INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time) VALUES (3, 'b250edae-b585-40f2-b260-d2d6e1d98315', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'xxxxxxxxxxxxxxxxxxxxx', '商商-77', 'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132', '2020-05-05 15:02:00', '2020-05-05 15:02:00');
-INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time) VALUES (4, '094e6802-add1-418c-9a60-3cc9a933a1a9', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'xxxxxxxxxxxxxxxxxxxx', '商商-77', 'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132', '2020-05-05 15:02:33', '2020-05-05 15:02:33');
-INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time) VALUES (5, '1703e4e9-67c6-48e0-943e-00eb7ebc4e22', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx1', 'cccccccccccccccccccccccc', '商商-77', 'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132', '2020-05-05 15:12:40', '2020-05-05 15:12:40');
-INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time) VALUES (6, 'f2b41cf9-c58f-4621-a7c8-e8d866a5fa22', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx1', 'ddddddddddddddddddd', '商商-77', 'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132', '2020-05-05 16:27:14', '2020-05-05 16:27:14');
-INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time) VALUES (7, '0ab8b9df-56e3-4fbf-be9d-c3aacb6055e7', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'Thisisatest', '商商-77', 'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132', '2020-05-05 16:33:38', '2020-05-05 16:33:38');
+INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time)
+VALUES (1, '90f450c5-ea8f-4807-8779-66dec870ce16', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'ddddddddddddddddddd', '商商-77',
+        '', '2020-05-05 14:58:49', '2020-05-05 14:58:49');
+INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time)
+VALUES (2, '5b930b8a-245d-47d6-b811-356679547022', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'ssssssssssssssssssss',
+        '商商-77',
+        'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132',
+        '2020-05-05 14:59:25', '2020-05-05 14:59:25');
+INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time)
+VALUES (3, 'b250edae-b585-40f2-b260-d2d6e1d98315', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'xxxxxxxxxxxxxxxxxxxxx',
+        '商商-77',
+        'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132',
+        '2020-05-05 15:02:00', '2020-05-05 15:02:00');
+INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time)
+VALUES (4, '094e6802-add1-418c-9a60-3cc9a933a1a9', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'xxxxxxxxxxxxxxxxxxxx',
+        '商商-77',
+        'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132',
+        '2020-05-05 15:02:33', '2020-05-05 15:02:33');
+INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time)
+VALUES (5, '1703e4e9-67c6-48e0-943e-00eb7ebc4e22', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx1', 'cccccccccccccccccccccccc',
+        '商商-77',
+        'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132',
+        '2020-05-05 15:12:40', '2020-05-05 15:12:40');
+INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time)
+VALUES (6, 'f2b41cf9-c58f-4621-a7c8-e8d866a5fa22', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx1', 'ddddddddddddddddddd', '商商-77',
+        'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132',
+        '2020-05-05 16:27:14', '2020-05-05 16:27:14');
+INSERT INTO t_comment (id, comment_id, article_id, comment_content, author, author_avatar, create_time, update_time)
+VALUES (7, '0ab8b9df-56e3-4fbf-be9d-c3aacb6055e7', 'xxxx-xxxxxxxxx-xxxxxxxxxx-xxxxxxx2', 'Thisisatest', '商商-77',
+        'https://wx.qlogo.cn/mmopen/vi_32/6LkInzF55Pemkiam4O5ywCc56ib7RDwbXXPqyYAp5ZRiad1ULtvSLK3iao0sOpBKeEL8eQQ0k669aGyIwDibiaEmPT0g/132',
+        '2020-05-05 16:33:38', '2020-05-05 16:33:38');
 
+
+CREATE TABLE `t_user`
+(
+    `id`          bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+    `username`    varchar(64)         NOT NULL DEFAULT '' COMMENT '用户名',
+    `password`    varchar(64)         NOT NULL DEFAULT '' COMMENT '密码密文',
+    `create_time` datetime            NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` datetime            NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (`id`),
+    UNIQUE `uniq_username` (`username`),
+    KEY `idx_create_time` (`create_time`),
+    KEY `idx_update_time` (`update_time`)
+) ENGINE = InnoDB
+  CHARSET = utf8mb4 COMMENT '用户表';
+
+CREATE TABLE `t_role`
+(
+    `id`          bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+    `role_name`   varchar(64)         NOT NULL DEFAULT '' COMMENT '角色名',
+    `role_desc`   varchar(64)         NOT NULL DEFAULT '' COMMENT '角色描述',
+    `create_time` datetime            NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` datetime            NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (`id`),
+    UNIQUE `uniq_role_name` (`role_name`),
+    KEY `idx_create_time` (`create_time`),
+    KEY `idx_update_time` (`update_time`)
+) ENGINE = InnoDB
+  CHARSET = utf8mb4 COMMENT '角色表';
+
+CREATE TABLE `t_user_role_config`
+(
+    `id`          bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+    `username`    varchar(64)         NOT NULL DEFAULT '' COMMENT '用户名',
+    `role_name`   varchar(64)         NOT NULL DEFAULT '' COMMENT '角色名',
+    `create_time` datetime            NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` datetime            NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (`id`),
+    UNIQUE `uniq_username_role_name` (`username`, `role_name`),
+    KEY `idx_role_name` (`role_name`),
+    KEY `idx_create_time` (`create_time`),
+    KEY `idx_update_time` (`update_time`)
+) ENGINE = InnoDB
+  CHARSET = utf8mb4 COMMENT '用户角色配置表';
