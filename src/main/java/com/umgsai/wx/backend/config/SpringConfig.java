@@ -15,5 +15,4 @@ public class SpringConfig {
     public LayoutDialect layoutDialect() {
         return new LayoutDialect();
     }
-
 }
