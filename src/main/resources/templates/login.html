@@ -28,7 +28,21 @@
         </div>
     </div>
 </div>
+
 -->
+<div class="layui-fluid" style="padding: 0px">
+    <form method="post" action="/login">
+        <div>
+            用户名：<input type="text" name="username">
+        </div>
+        <div>
+            密码：<input type="password" name="password">
+        </div>
+        <div>
+            <button type="submit">立即登陆</button>
+        </div>
+    </form>
+</div>
 <!-- Head End -->
 
 <!-- Carousel -->
@@ -84,14 +98,14 @@
         <form class="layui-form zyl_pad_01" action="/login" method="post">
             <div class="layui-col-sm12 layui-col-md12">
                 <div class="layui-form-item">
-                    <input type="text" name="userName" lay-verify="required|userName" autocomplete="off"
+                    <input type="text" name="username" lay-verify="required|userName" autocomplete="off"
                            placeholder="账号" class="layui-input">
                     <i class="layui-icon layui-icon-username zyl_lofo_icon"></i>
                 </div>
             </div>
             <div class="layui-col-sm12 layui-col-md12">
                 <div class="layui-form-item">
-                    <input type="password" name="nuse" lay-verify="required|pass" autocomplete="off" placeholder="密码"
+                    <input type="password" name="password" lay-verify="required|pass" autocomplete="off" placeholder="密码"
                            class="layui-input">
                     <i class="layui-icon layui-icon-password zyl_lofo_icon"></i>
                 </div>
@@ -170,7 +184,7 @@
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             });
-            return true;
+            // return true;
         });
 
 
