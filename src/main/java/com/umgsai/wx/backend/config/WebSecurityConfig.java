@@ -1,5 +1,8 @@
 package com.umgsai.wx.backend.config;
 
+import cn.hutool.crypto.digest.DigestUtil;
+import cn.hutool.crypto.digest.MD5;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -9,8 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import sun.swing.StringUIClientPropertyKey;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 
 /**
  * Shang
@@ -34,7 +39,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
             @Override
             public boolean matches(CharSequence charSequence, String s) {
-                return s.equals(charSequence.toString());
+                // charSequence 用户输入的密码， s 数据库中存储的password字段
+                if (s == null) {
+                    return false;
+                }
+                if (charSequence == null) {
+                    return false;
+                }
+                String md5Hex = DigestUtil.md5Hex(charSequence.toString());
+                return StringUtils.equals(md5Hex, s);
             }
         });
 //        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
@@ -48,9 +61,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 // 设置登陆页
-                .formLogin().loginPage("/login")
+                .formLogin().loginPage("/login.html")
                 // 设置登陆成功页
-                .defaultSuccessUrl("/").permitAll()
+                .defaultSuccessUrl("/index.html").permitAll()
                 // 自定义登陆用户名和密码参数，默认为username和password
 //                .usernameParameter("username")
 //                .passwordParameter("password")
@@ -64,7 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         // 设置拦截忽略文件夹，可以对静态资源放行
-        web.ignoring().antMatchers("/css/**", "/js/**");
+        web.ignoring().antMatchers("/static/**", "/js/**");
     }
 
 }

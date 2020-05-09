@@ -126,6 +126,7 @@ CREATE TABLE `t_user`
     KEY `idx_update_time` (`update_time`)
 ) ENGINE = InnoDB
   CHARSET = utf8mb4 COMMENT '用户表';
+  insert into t_user (username, password) values ('shangyidong', 'xxxx');
 
 CREATE TABLE `t_role`
 (
@@ -140,6 +141,8 @@ CREATE TABLE `t_role`
     KEY `idx_update_time` (`update_time`)
 ) ENGINE = InnoDB
   CHARSET = utf8mb4 COMMENT '角色表';
+    insert into t_role (role_name, role_desc) values ('ROLE_ADMIN', '管理员角色');
+
 
 CREATE TABLE `t_user_role_config`
 (
@@ -155,3 +158,4 @@ CREATE TABLE `t_user_role_config`
     KEY `idx_update_time` (`update_time`)
 ) ENGINE = InnoDB
   CHARSET = utf8mb4 COMMENT '用户角色配置表';
+      insert into t_user_role_config (username, role_name) values ('shangyidong', 'ROLE_ADMIN');

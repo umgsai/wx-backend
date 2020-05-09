@@ -48,7 +48,17 @@
                 </ul>
 
                 <ul class="layui-nav layui-layout-right">
-
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" th:text="${#httpServletRequest.getUserPrincipal().getName()}"
+                           th:unless="${#httpServletRequest.getUserPrincipal() == null}" id="userInfo">
+                            请登录
+                        </a>
+                        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                            <dd>
+                                <a href="/logout">退出</a>
+                            </dd>
+                        </dl>
+                    </li>
                 </ul>
             </div>
 
@@ -81,6 +91,10 @@
         </div>
         <script th:inline="javascript" type="text/javascript">
             $(document).ready(function () {
+
+            });
+
+            layui.use(['layer', 'element'], function () {
 
             });
         </script>

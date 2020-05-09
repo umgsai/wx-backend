@@ -1,6 +1,7 @@
 package com.umgsai.wx.backend.config;
 
 import com.google.common.collect.Lists;
+import com.umgsai.wx.backend.dao.data.UserDO;
 import com.umgsai.wx.backend.dao.data.UserRoleConfigDO;
 import com.umgsai.wx.backend.manager.AuthManager;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,7 +40,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
             @Override
             public String getPassword() {
-                return "xxxx";
+                UserDO userDO = authManager.selectByName(username);
+                if (userDO == null) {
+                    return null;
+                }
+                return userDO.getPassword();
             }
 
             @Override
@@ -49,22 +54,22 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
             @Override
             public boolean isAccountNonExpired() {
-                return false;
+                return true;
             }
 
             @Override
             public boolean isAccountNonLocked() {
-                return false;
+                return true;
             }
 
             @Override
             public boolean isCredentialsNonExpired() {
-                return false;
+                return true;
             }
 
             @Override
             public boolean isEnabled() {
-                return false;
+                return true;
             }
         };
     }
