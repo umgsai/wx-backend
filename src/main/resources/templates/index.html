@@ -19,6 +19,7 @@
 </head>
 <body>
 <div layout:fragment="content">
+<!--
     <div class="layui-fluid" style="padding: 0px">
         <blockquote class="layui-elem-quote">
             <h1>登陆成功</h1>
@@ -26,6 +27,200 @@
             <a href="/user">检测ROLE_USER角色</a>
             <button onclick="window.location.href='/logout'">退出登录</button>
         </blockquote>
+    </div>
+-->
+    <blockquote class="layui-elem-quote layui-bg-blue">
+        <div id="nowTime">亲爱的用户，上午好！ 当前时间为： 2020年05月10日  09:38:24　星期日</div>
+    </blockquote>
+    <div class="layui-row layui-col-space10 panel_box">
+        <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+            <a href="javascript:;" data-url="#" target="_blank">
+                <div class="panel_icon layui-bg-green">
+                    <i class="layui-icon layui-icon-praise"></i>
+                </div>
+                <div class="panel_word">
+                    <span>为我点赞</span>
+                    <cite>点赞链接</cite>
+                </div>
+            </a>
+        </div>
+        <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+            <a href="javascript:;" data-url="#" target="_blank">
+                <div class="panel_icon layui-bg-black">
+                    <i class="layui-icon layui-icon-app"></i>
+                </div>
+                <div class="panel_word">
+                    <span>优赛工作室</span>
+                    <cite>示例链接</cite>
+                </div>
+            </a>
+        </div>
+        <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+            <a href="javascript:;" data-url="#" target="_blank">
+                <div class="panel_icon layui-bg-red">
+                    <i class="layui-icon layui-icon-face-smile"></i>
+                </div>
+                <div class="panel_word">
+                    <span>示例</span>
+                    <cite>示例链接</cite>
+                </div>
+            </a>
+        </div>
+        <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+            <a href="javascript:;" data-url="#">
+                <div class="panel_icon layui-bg-orange">
+                    <i class="layui-icon layui-icon-user"></i>
+                </div>
+                <div class="panel_word userAll">
+                    <span>4,113,556</span>
+                    <em>用户总数</em>
+                    <cite class="layui-hide">用户中心</cite>
+                </div>
+            </a>
+        </div>
+        <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+            <a href="javascript:;" data-url="#">
+                <div class="panel_icon layui-bg-cyan">
+                    <i class="layui-anim layui-icon" data-icon=""></i>
+                </div>
+                <div class="panel_word outIcons">
+                    <span>Hello world</span>
+                    <em>示例</em>
+                    <cite class="layui-hide">图标管理</cite>
+                </div>
+            </a>
+        </div>
+        <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+            <a href="javascript:;">
+                <div class="panel_icon layui-bg-blue">
+                    <i class="layui-icon layui-icon-face-smile"></i>
+                </div>
+                <div class="panel_word">
+                    <span class="loginTime">2020年5月10日10:05:24</span>
+                    <cite>上次登录时间</cite>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-lg6 layui-col-md12">
+            <blockquote class="layui-elem-quote title">系统基本参数</blockquote>
+            <table class="layui-table magt0">
+                <colgroup>
+                    <col width="150">
+                    <col>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <td>当前版本</td>
+                    <td class="version">
+                        1.0
+                    </td>
+                </tr>
+                <tr>
+                    <td>开发作者</td>
+                    <td class="author">
+                        商商-77
+                    </td>
+                </tr>
+                <tr>
+                    <td>网站首页</td>
+                    <td class="homePage">
+                        http://umgsai-wx.mynatapp.cc/
+                    </td>
+                </tr>
+                <tr>
+                    <td>服务器环境</td>
+                    <td class="server">
+                        Tomcat9.0
+                    </td>
+                </tr>
+                <tr>
+                    <td>数据库版本</td>
+                    <td class="dataBase">
+                        MySQL8.0
+                    </td>
+                </tr>
+                <tr>
+                    <td>最大上传限制</td>
+                    <td class="maxUpload">
+                        100MB
+                    </td>
+                </tr>
+                <tr>
+                    <td>当前用户权限</td>
+                    <td class="userRights">
+                        超级管理员
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <blockquote class="layui-elem-quote title">
+                最新文章
+                <i class="layui-icon layui-red"></i>
+            </blockquote>
+            <table class="layui-table mag0" lay-skin="line">
+                <colgroup>
+                    <col>
+                    <col width="110">
+                </colgroup>
+                <tbody class="hot_news"></tbody>
+            </table>
+        </div>
+        <div class="layui-col-lg6 layui-col-md12">
+            <blockquote class="layui-elem-quote title">
+                更新日志
+            </blockquote>
+            <div class="layui-elem-quote layui-quote-nm history_box magb0">
+                <ul class="layui-timeline">
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis"></i>
+                        <div class="layui-timeline-content layui-text">
+                            <div class="layui-timeline-title">
+                                <h3 class="layui-inline">
+                                    初始版本
+                                    <span class="layui-red">1.0基础版</span>
+                                    发布　
+                                </h3>
+                                <span class="layui-badge-rim">2020-01-31</span>
+                            </div>
+                            <ul>
+                                <li class="layui-red layedit-tool-help">
+                                    郑重提示：版本会持续更新
+                                </li>
+                                <li>升级步骤</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis"></i>
+                        <div class="layui-timeline-content layui-text">
+                            <div class="layui-timeline-title">
+                                <h3 class="layui-inline">
+                                    0.1 Beta版本发布　
+                                </h3>
+                                <span class="layui-badge-rim">2019-07-05</span>
+                            </div>
+                            <ul>
+                                <li># v1.0.1（优化） - 2019-06-28</li>
+                                <li>修改刚进入页面无任何操作时按回车键提示“请输入解锁密码！”</li>
+                                <li>新增打开窗口的动画效果</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis"></i>
+                        <div class="layui-timeline-content layui-text">
+                            <div class="layui-timeline-title">
+                                <h3 class="layui-inline">V1.0正式与大家见面，提供了一些简单功能　</h3>
+                                <span class="layui-badge-rim">2019-06-21</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 <script layout:fragment="custom-script">

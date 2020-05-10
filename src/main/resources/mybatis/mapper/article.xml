@@ -57,11 +57,15 @@
     <!--sql语句中的#也可以用$,但是#可以避免sql注入-->
     <!--指定单条查询-->
     <select id="getById" resultMap="BaseResultMap">
-        select * from t_article where id = #{id}
+        select
+        <include refid="Base_Column_List"/>
+        from t_article where id = #{id}
     </select>
 
     <select id="getByArticleId" resultMap="BaseResultMap">
-        select * from t_article where article_id = #{articleId}
+        select
+        <include refid="Base_Column_List"/>
+        from t_article where article_id = #{articleId}
     </select>
 
     <!--删-->
@@ -77,7 +81,9 @@
     </update>
 
     <select id="queryList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
-        select * from t_article order by id desc limit #{offset}, #{pageSize}
+        select
+        <include refid="Base_Column_List"/>
+        from t_article order by id desc limit #{offset}, #{pageSize}
     </select>
 
     <select id="queryCount" resultType="int">

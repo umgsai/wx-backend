@@ -10,4 +10,10 @@
     <typeAliases>
         <package name="com.umgsai.wx.backend.dao.data"/>
     </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.umgsai.wx.backend.config.interceptor.SqlPerformanceInterceptor">
+            <property name="maxTime" value="1000" />
+        </plugin>
+    </plugins>
 </configuration>

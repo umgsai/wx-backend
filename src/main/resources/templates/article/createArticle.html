@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default.html}">
+<head>
+    <title>首页</title>
+    <script type="text/javascript" src="/static/js/lib/util.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div id="create-article" class="layui-card" style="height: auto;">
+        <div class="layui-card-header">
+            <span class="layui-breadcrumb" style="visibility: visible;">
+                <a href="/">首页</a>
+                <span lay-separator="">/</span>
+                <a href="javascript: void(0)">文章管理</a>
+                <span lay-separator="">/</span>
+                <a href="javascript: void(0)">
+                    <cite>发新文章</cite>
+                </a>
+            </span>
+        </div>
+        <div class="layui-card-body" style="height: 100%; min-height: 600px;">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" id="title" lay-verify="title" autocomplete="off"
+                               placeholder="请输入标题"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+             <textarea name="editor" id="editor" rows="10" cols="80">
+                请输入文章内容
+            </textarea>
+                </div>
+                <div class="layui-form-item">
+                    <button type="button" onclick="submitArticle()" class="layui-btn">提交</button>
+                </div>
+            </form>
+        </div>
+        <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    </div>
+    <script layout:fragment="custom-script">
+        var editor = CKEDITOR.replace('editor');
+
+        editor.on('change', function (evt) {
+            // getData() returns CKEditor's HTML content.
+            console.log('Total bytes: ' + evt.editor.getData().length);
+        });
+
+        // var createArticle = new Vue({
+        //     el: '#create-article',
+        //     data: {
+        //         title: ""
+        //     },
+        //     methods: {},
+        //     watch: {
+        //         title(newVal, oldVal) {
+        //             console.log("new: " + newVal);
+        //             console.log("old: " + oldVal);
+        //         }
+        //     }
+        // });
+
+
+        let submitArticle = function () {
+            let articleContent = CKEDITOR.instances.editor.getData();
+            let title = layui.$("#title").val();
+
+            if (!title || !articleContent) {
+                toastr.error("文章标题和文章内容不可为空");
+                return;
+            }
+
+            layui.$.ajax({
+                type: "POST",
+                url: "/article/postArticle",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    title: title,
+                    articleContent: articleContent
+                }),
+                success: function (data) {
+                    if (!data.success) {
+                        toastr.error(data.msg);
+                        return;
+                    }
+                    toastr.success("提交成功");
+                    window.location = "/article/list.html";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+

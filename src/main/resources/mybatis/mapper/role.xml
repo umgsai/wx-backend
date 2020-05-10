@@ -4,11 +4,11 @@
 <mapper namespace="com.umgsai.wx.backend.dao.RoleMapper">
     <!--id必须与接口对应的功能的名称保持一致-->
     <resultMap id="BaseResultMap" type="com.umgsai.wx.backend.dao.data.RoleDO">
-        <result column="id" property="id" />
-        <result column="role_name" property="roleName" />
-        <result column="role_desc" property="roleDesc" />
-        <result column="create_time" property="createTime" />
-        <result column="update_time" property="updateTime" />
+        <result column="id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_desc" property="roleDesc"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -21,10 +21,10 @@
 
     <sql id="setField">
         <set>
-            <if test ='null != roleName'>role_name = #{roleName},</if>
-            <if test ='null != roleDesc'>role_desc = #{roleDesc},</if>
-            <if test ='null != createTime'>create_time = #{createTime},</if>
-            <if test ='null != updateTime'>update_time = #{updateTime}</if>
+            <if test='null != roleName'>role_name = #{roleName},</if>
+            <if test='null != roleDesc'>role_desc = #{roleDesc},</if>
+            <if test='null != createTime'>create_time = #{createTime},</if>
+            <if test='null != updateTime'>update_time = #{updateTime}</if>
         </set>
     </sql>
 
@@ -40,11 +40,15 @@
     <!--sql语句中的#也可以用$,但是#可以避免sql注入-->
     <!--指定单条查询-->
     <select id="getById" resultMap="BaseResultMap">
-        select * from t_role where id = #{id}
+        select
+        <include refid="Base_Column_List"/>
+        from t_role where id = #{id}
     </select>
 
     <select id="getByRoleName" resultMap="BaseResultMap">
-        select * from t_role where role_name = #{roleName}
+        select
+        <include refid="Base_Column_List"/>
+        from t_role where role_name = #{roleName}
     </select>
 
     <!--删-->

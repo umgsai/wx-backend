@@ -40,12 +40,16 @@
     <!--sql语句中的#也可以用$,但是#可以避免sql注入-->
     <!--指定单条查询-->
     <select id="getById" resultMap="BaseResultMap">
-        select * from t_user_role_config where id = #{id}
+        select
+        <include refid="Base_Column_List"/>
+        from t_user_role_config where id = #{id}
     </select>
 
 
     <select id="queryByUsername" resultMap="BaseResultMap">
-        select * from t_user_role_config where username = #{username}
+        select
+        <include refid="Base_Column_List"/>
+        from t_user_role_config where username = #{username}
     </select>
 
     <!--删-->

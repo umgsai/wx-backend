@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default.html}">
+<head>
+    <title>首页</title>
+    <script type="text/javascript" src="/static/js/lib/util.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div id="article-list" class="layui-card" style="height: auto;">
+        <div class="layui-card-header">
+            <span class="layui-breadcrumb" style="visibility: visible;">
+                <a href="/">首页</a>
+                <span lay-separator="">/</span>
+                <a href="javascript: void(0)">文章管理</a>
+                <span lay-separator="">/</span>
+                <a href="javascript: void(0)">
+                    <cite>文章列表</cite>
+                </a>
+            </span>
+        </div>
+        <div class="layui-card-body" style="height: 100%; min-height: 600px;">
+            <div class="layui-form">
+                <table class="layui-table">
+                    <colgroup>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+<!--                        <col>-->
+                        <col>
+                        <col width="170">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>标题</th>
+                        <th>Author</th>
+<!--                        <th>内容摘要</th>-->
+                        <th>查看</th>
+                        <th>获赞</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="article in articleList">
+                        <td>{{article.id}}</td>
+                        <td>{{article.title}}</td>
+                        <td>{{article.author}}</td>
+<!--                        <td>xxx......</td>-->
+                        <td>{{article.visits}}</td>
+                        <td>{{article.likes}}</td>
+                        <td>
+                            {{(new Date(Number(article.createTime))).format("yyyy-MM-dd hh:mm:ss")}}
+                        </td>
+                        <td>
+                            <div class="layui-btn-group">
+                                <!--
+                                                        <button type="button" class="layui-btn layui-btn-xs layui-btn-warm">置顶</button>
+                                -->
+                                <button type="button" class="layui-btn layui-btn-xs layui-btn-normal"
+                                        :data-id="article.articleId">编辑
+                                </button>
+                                <button type="button" class="layui-btn layui-btn-xs layui-btn-danger"
+                                        :data-id="article.articleId">删除
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script layout:fragment="custom-script">
+    var app = new Vue({
+        el: '#article-list',
+        data: {
+            pageNum: 1,
+            pageSize: 10,
+            articleList: []
+        },
+        methods: {},
+        watch: {
+            pageNum(newVal, oldVal) {
+
+            }
+        }
+    });
+
+    layui.$.ajax({
+        type: "POST",
+        url: "/article/list",
+        dataType: "json",
+        // contentType: "application/json",
+        data: {
+            pageNum: app.pageNum,
+            pageSize: app.pageSize
+        },
+        success: function (data) {
+            if (!data.success) {
+                toastr.error(data.msg);
+                return;
+            }
+            app.articleList = data.data;
+        }
+    });
+</script>
+</body>
+</html>
+
