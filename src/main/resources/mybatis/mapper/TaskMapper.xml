@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 必须与接口的全类名保持一致-->
+<mapper namespace="com.umgsai.wx.backend.dao.TaskMapper">
+    <!--id必须与接口对应的功能的名称保持一致-->
+    <resultMap id="BaseResultMap" type="com.umgsai.wx.backend.dao.data.TaskData">
+        <result column="id" property="id" />
+        <result column="task_id" property="taskId" />
+        <result column="task_group" property="taskGroup" />
+        <result column="task_source" property="taskSource" />
+        <result column="task_type" property="taskType" />
+        <result column="task_priority" property="taskPriority" />
+        <result column="task_comment" property="taskComment" />
+        <result column="show_no" property="showNo" />
+        <result column="uid" property="uid" />
+        <result column="task_assignee" property="taskAssignee" />
+        <result column="task_status" property="taskStatus" />
+        <result column="ssid" property="ssid" />
+        <result column="phone_number" property="phoneNumber" />
+        <result column="is_complaint" property="isComplaint" />
+        <result column="user_vouchers" property="userVouchers" />
+        <result column="god_vouchers" property="godVouchers" />
+        <result column="order_id" property="orderId" />
+        <result column="appeal_id" property="appealId" />
+        <result column="order_no" property="orderNo" />
+        <result column="task_log_list" property="taskLogList" />
+        <result column="complain_info" property="complainInfo" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        task_id,
+        task_group,
+        task_source,
+        task_type,
+        task_priority,
+        task_comment,
+        show_no,
+        uid,
+        task_assignee,
+        task_status,
+        ssid,
+        phone_number,
+        is_complaint,
+        user_vouchers,
+        god_vouchers,
+        order_id,
+        appeal_id,
+        order_no,
+        task_log_list,
+        complain_info,
+        create_time,
+        update_time
+    </sql>
+
+    <sql id="setField">
+        <set>
+            <if test ='null != taskId'>task_id = #{taskId},</if>
+            <if test ='null != taskGroup'>task_group = #{taskGroup},</if>
+            <if test ='null != taskSource'>task_source = #{taskSource},</if>
+            <if test ='null != taskType'>task_type = #{taskType},</if>
+            <if test ='null != taskPriority'>task_priority = #{taskPriority},</if>
+            <if test ='null != taskComment'>task_comment = #{taskComment},</if>
+            <if test ='null != showNo'>show_no = #{showNo},</if>
+            <if test ='null != uid'>uid = #{uid},</if>
+            <if test ='null != taskAssignee'>task_assignee = #{taskAssignee},</if>
+            <if test ='null != taskStatus'>task_status = #{taskStatus},</if>
+            <if test ='null != ssid'>ssid = #{ssid},</if>
+            <if test ='null != phoneNumber'>phone_number = #{phoneNumber},</if>
+            <if test ='null != isComplaint'>is_complaint = #{isComplaint},</if>
+            <if test ='null != userVouchers'>user_vouchers = #{userVouchers},</if>
+            <if test ='null != godVouchers'>god_vouchers = #{godVouchers},</if>
+            <if test ='null != orderId'>order_id = #{orderId},</if>
+
+            <if test ='null != appealId'>appeal_id = #{appealId},</if>
+            <if test ='null != orderNo'>order_no = #{orderNo},</if>
+            <if test ='null != taskLogList'>task_log_list = #{taskLogList},</if>
+            <if test ='null != complainInfo'>complain_info = #{complainInfo},</if>
+            <if test ='null != createTime'>create_time = #{createTime},</if>
+            <if test ='null != updateTime'>update_time = #{updateTime}</if>
+        </set>
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id"
+            parameterType="com.umgsai.wx.backend.dao.data.TaskData">
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+            SELECT @@IDENTITY
+        </selectKey>
+        INSERT INTO t_task
+        <include refid="setField"/>
+    </insert>
+
+</mapper>
