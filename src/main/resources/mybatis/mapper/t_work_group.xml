@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.umgsai.wx.backend.dao.WorkGroupMapper">
+    <resultMap id="BaseResultMap" type="com.umgsai.wx.backend.dao.data.WorkGroupDO">
+        <result column="id" property="id"/>
+        <result column="group_name" property="groupName"/>
+        <result column="department" property="department" />
+        <result column="task_assign_type" property="taskAssignType" />
+        <result column="max_task_count" property="maxTaskCount"/>
+        <result column="work_time_config" property="workTimeConfig"/>
+        <result column="task_assign_type" property="taskAssignType" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                id,
+                group_name,
+                department,
+                task_assign_type,
+                max_task_count,
+                work_time_config,
+                task_assign_type,
+                is_deleted,
+                create_time,
+                update_time
+    </sql>
+
+    <sql id="setField">
+        <set>
+            <if test ='null != groupName'>group_name = #{groupName},</if>
+            <if test ='null != department'>department = #{department},</if>
+            <if test ='null != taskAssignType'>task_assign_type = #{taskAssignType},</if>
+            <if test ='null != maxTaskCount'>max_task_count = #{maxTaskCount},</if>
+            <if test ='null != workTimeConfig'>work_time_config = #{workTimeConfig},</if>
+            <if test ='null != createTime'>create_time = #{createTime},</if>
+            <if test ='null != updateTime'>update_time = #{updateTime},</if>
+            <if test ='null != isDeleted'>is_deleted = #{isDeleted}</if>
+        </set>
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id"
+            parameterType="com.umgsai.wx.backend.dao.data.WorkGroupDO">
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+            SELECT @@IDENTITY
+        </selectKey>
+        INSERT INTO t_work_group
+        <include refid="setField"/>
+    </insert>
+
+    <delete id="deleteByGroupName">
+        update t_work_group set is_deleted = 1
+        WHERE group_name = #{groupName} and is_deleted = 0
+    </delete>
+
+    <update id="update" parameterType="com.umgsai.wx.backend.dao.data.WorkGroupDO">
+        UPDATE t_work_group
+        <include refid="setField"/>
+        WHERE id = #{id} and is_deleted = 0
+    </update>
+
+    <update id="updateByGroupName" parameterType="com.umgsai.wx.backend.dao.data.WorkGroupDO">
+        UPDATE t_work_group
+        <include refid="setField"/>
+        WHERE group_name = #{groupName}
+    </update>
+
+    <update id="updateWorkTimeConfig" parameterType="map">
+        UPDATE t_work_group
+        set work_time_config = #{workTimeConfig}
+        WHERE id = #{id} and is_deleted = 0
+    </update>
+
+    <select id="queryByGroupName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_work_group
+        where group_name = #{groupName} and is_deleted = 0
+    </select>
+
+    <select id="queryByGroupNameWithDeleted" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_work_group
+        where group_name = #{groupName}
+    </select>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_work_group
+        where is_deleted = 0
+    </select>
+
+    <select id="queryById" resultType="com.umgsai.wx.backend.dao.data.WorkGroupDO">
+        select
+        <include refid="Base_Column_List"/>
+        from t_work_group
+        where id = #{id} and is_deleted = 0
+    </select>
+</mapper>

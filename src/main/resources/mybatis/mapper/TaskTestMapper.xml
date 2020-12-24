@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 必须与接口的全类名保持一致-->
+<mapper namespace="com.umgsai.wx.backend.dao.TaskTestMapper">
+    <!--id必须与接口对应的功能的名称保持一致-->
+    <resultMap id="BaseResultMap" type="com.umgsai.wx.backend.dao.data.TaskTestData">
+        <result column="id" property="id"/>
+        <result column="task_id" property="taskId"/>
+        <result column="task_source" property="taskSource"/>
+        <result column="task_type" property="taskType"/>
+        <result column="urgent_level" property="urgentLevel"/>
+        <result column="phone_number" property="phoneNumber"/>
+        <result column="order_id" property="orderId"/>
+        <result column="uid" property="uid"/>
+        <result column="task_creator" property="taskCreator"/>
+        <result column="task_assignee" property="taskAssignee"/>
+        <result column="task_group" property="taskGroup"/>
+        <result column="task_hint" property="taskHint"/>
+        <result column="task_remark" property="taskRemark"/>
+        <result column="task_status" property="taskStatus"/>
+        <result column="extra_info" property="extraInfo"/>
+        <result column="assign_time" property="assignTime"/>
+        <result column="finish_time" property="finishTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="cost_time" property="costTime"/>
+        <result column="timeout" property="timeout"/>
+        <result column="reply_deadline" property="replyDeadline"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        task_id,
+        task_source,
+        task_type,
+        urgent_level,
+        phone_number,
+        order_id,
+        uid,
+        task_creator,
+        task_assignee,
+        task_group,
+        task_hint,
+        task_remark,
+        task_status,
+        extra_info,
+        assign_time,
+        finish_time,
+        create_time,
+        update_time,
+        cost_time,
+        timeout,
+        reply_deadline
+    </sql>
+
+    <sql id="setField">
+        <set>
+            <if test='null != taskId'>task_id = #{taskId},</if>
+            <if test='null != taskSource'>task_source = #{taskSource},</if>
+            <if test='null != taskType'>task_type = #{taskType},</if>
+            <if test='null != urgentLevel'>urgent_level = #{urgentLevel},</if>
+            <if test='null != phoneNumber'>phone_number = #{phoneNumber},</if>
+            <if test='null != orderId'>order_id = #{orderId},</if>
+            <if test='null != uid'>uid = #{uid},</if>
+            <if test='null != taskCreator'>task_creator = #{taskCreator},</if>
+            <if test='null != taskAssignee'>task_assignee = #{taskAssignee},</if>
+            <if test='null != taskGroup'>task_group = #{taskGroup},</if>
+            <if test='null != taskHint'>task_hint = #{taskHint},</if>
+            <if test='null != taskRemark'>task_remark = #{taskRemark},</if>
+            <if test='null != taskStatus'>task_status = #{taskStatus},</if>
+            <if test='null != extraInfo'>extra_info = #{extraInfo},</if>
+            <if test='null != assignTime'>assign_time = #{assignTime},</if>
+            <if test='null != finishTime'>finish_time = #{finishTime},</if>
+            <if test='null != createTime'>create_time = #{createTime},</if>
+            <if test='null != updateTime'>update_time = #{updateTime},</if>
+            <if test='null != costTime'>cost_time = #{costTime},</if>
+            <if test='null != timeout'>timeout = #{timeout},</if>
+            <if test='null != replyDeadline'>reply_deadline = #{replyDeadline}</if>
+        </set>
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id"
+            parameterType="com.umgsai.wx.backend.dao.data.TaskTestData">
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+            SELECT @@IDENTITY
+        </selectKey>
+        INSERT INTO t_task_test
+        <include refid="setField"/>
+    </insert>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_task_test
+    </select>
+
+    <!--删-->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from t_task_test where id = #{id}
+    </delete>
+
+    <!--改-->
+    <update id="update" parameterType="com.umgsai.wx.backend.dao.data.TaskTestData">
+        UPDATE t_task_test
+        <include refid="setField"/>
+        WHERE id = #{id}
+    </update>
+</mapper>
