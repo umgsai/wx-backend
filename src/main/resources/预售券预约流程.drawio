@@ -1,9 +1,12 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0" version="28.0.6">
   <diagram name="第 1 页" id="V6pf3GS-7zc-uk2PHbtz">
-    <mxGraphModel dx="1558" dy="1106" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2058" dy="1116" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="Ux1y7tzrLNTgmtEd45K7-8" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="410" height="670" as="geometry" />
+        </mxCell>
         <mxCell id="NGZoiBR76gbujGB8mwv5-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="NGZoiBR76gbujGB8mwv5-1" target="NGZoiBR76gbujGB8mwv5-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -71,8 +74,8 @@
         <mxCell id="NGZoiBR76gbujGB8mwv5-20" value="填写入离日期&lt;div&gt;用户点提交&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="470" y="303" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Ux1y7tzrLNTgmtEd45K7-1" value="预授券预约流程" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="295" y="118" width="110" height="30" as="geometry" />
+        <mxCell id="Ux1y7tzrLNTgmtEd45K7-1" value="预售券预约" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="520" y="130" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ux1y7tzrLNTgmtEd45K7-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;textOpacity=30;" vertex="1" parent="1">
           <mxGeometry x="520" y="500" width="135" height="150" as="geometry" />
@@ -95,8 +98,11 @@
             <mxPoint x="440" y="430" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ux1y7tzrLNTgmtEd45K7-7" value="注：仅以卖价举例，底价、优惠券、多币种金额的拆分方法类似" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="420" y="670" width="360" height="30" as="geometry" />
+        <mxCell id="Ux1y7tzrLNTgmtEd45K7-7" value="注：仅以卖价举例，底价、优惠券、&lt;div&gt;多币种金额的拆分方法类似&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="490" y="680" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ux1y7tzrLNTgmtEd45K7-9" value="酒店订单主流程" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="140" y="150" width="110" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
