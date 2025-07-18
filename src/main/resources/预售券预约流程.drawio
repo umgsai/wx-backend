@@ -95,6 +95,9 @@
             <mxPoint x="470" y="430" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="Ux1y7tzrLNTgmtEd45K7-7" value="注：仅以卖价举例，底价、优惠券、多币种金额的拆分方法类似" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="467" y="680" width="360" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
