@@ -7,7 +7,7 @@ import com.umgsai.wx.backend.model.PageResult;
 import com.umgsai.wx.backend.model.Response;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.concurrent.ThreadPoolExecutor;
 
 @RequestMapping("/api")

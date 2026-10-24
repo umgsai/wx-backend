@@ -50,8 +50,7 @@
 
                 <ul class="layui-nav layui-layout-right">
                     <li class="layui-nav-item">
-                        <a href="javascript:;" th:text="${#httpServletRequest.getUserPrincipal().getName()}"
-                           th:unless="${#httpServletRequest.getUserPrincipal() == null}" id="userInfo">
+                        <a href="javascript:;" th:text="${username} ?: '请登录'" id="userInfo">
                             请登录
                         </a>
                         <dl class="layui-nav-child"> <!-- 二级菜单 -->

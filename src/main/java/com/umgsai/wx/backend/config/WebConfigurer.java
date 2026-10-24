@@ -1,11 +1,9 @@
 package com.umgsai.wx.backend.config;
 
-import com.alibaba.fastjson.serializer.SerializeConfig;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
-import com.alibaba.fastjson.support.config.FastJsonConfig;
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import com.alibaba.fastjson2.JSONWriter;
+import com.alibaba.fastjson2.support.config.FastJsonConfig;
+import com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter;
+import org.springframework.boot.http.converter.autoconfigure.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -15,11 +13,16 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * fastjson 1.x -> fastjson2 迁移：
+ * FastJsonHttpMessageConverter 使用 fastjson2-extension-spring6 包（兼容 Spring Framework 6/7）；
+ * SerializerFeature 替换为 JSONWriter.Feature；
+ * MediaType.APPLICATION_JSON_UTF8 已从 Spring 6 移除，改用 APPLICATION_JSON（默认 UTF-8）。
+ */
 @Configuration
 public class WebConfigurer implements WebMvcConfigurer {
 
@@ -47,30 +50,21 @@ public class WebConfigurer implements WebMvcConfigurer {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
-        fastJsonConfig.setSerializerFeatures(
-                SerializerFeature.DisableCircularReferenceDetect,
-                SerializerFeature.WriteMapNullValue,
-                SerializerFeature.WriteNullNumberAsZero,
-                SerializerFeature.WriteNullStringAsEmpty,
-                SerializerFeature.WriteNullListAsEmpty,
-                SerializerFeature.WriteDateUseDateFormat,
-                SerializerFeature.WriteNullBooleanAsFalse,
-                SerializerFeature.WriteNonStringKeyAsString,
-                SerializerFeature.BrowserCompatible);
-
-        //解决Long转json精度丢失的问题
-        SerializeConfig serializeConfig = SerializeConfig.globalInstance;
-        serializeConfig.put(BigInteger.class, ToStringSerializer.instance);
-        serializeConfig.put(Long.class, ToStringSerializer.instance);
-        serializeConfig.put(Long.TYPE, ToStringSerializer.instance);
-        fastJsonConfig.setSerializeConfig(serializeConfig);
-
         fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
-        fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteMapNullValue);
+        fastJsonConfig.setWriterFeatures(
+                //解决Long转json精度丢失的问题（fastjson1 中通过 ToStringSerializer 实现，fastjson2 用 WriteLongAsString）
+                JSONWriter.Feature.WriteLongAsString,
+                JSONWriter.Feature.WriteMapNullValue,
+                JSONWriter.Feature.WriteNullNumberAsZero,
+                JSONWriter.Feature.WriteNullStringAsEmpty,
+                JSONWriter.Feature.WriteNullListAsEmpty,
+                JSONWriter.Feature.WriteNullBooleanAsFalse,
+                JSONWriter.Feature.WriteNonStringKeyAsString,
+                JSONWriter.Feature.BrowserCompatible);
 
         //处理中文乱码问题
         List<MediaType> fastMediaTypes = new ArrayList<>();
-        fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        fastMediaTypes.add(MediaType.APPLICATION_JSON);
 
         fastConverter.setSupportedMediaTypes(fastMediaTypes);
         fastConverter.setFastJsonConfig(fastJsonConfig);
@@ -87,10 +81,10 @@ public class WebConfigurer implements WebMvcConfigurer {
         FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
         //2:添加fastJson的配置信息;
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
-        fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
+        fastJsonConfig.setWriterFeatures(JSONWriter.Feature.PrettyFormat);
         //3处理中文乱码问题
         List<MediaType> fastMediaTypes = new ArrayList<>();
-        fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        fastMediaTypes.add(MediaType.APPLICATION_JSON);
         //4.在convert中添加配置信息.
         fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
         fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);

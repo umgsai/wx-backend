@@ -1,6 +1,6 @@
 package com.umgsai.wx.backend.manager;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.google.common.collect.Lists;
 import com.umgsai.wx.backend.dao.ArticleMapper;
 import com.umgsai.wx.backend.dao.data.ArticleDO;
@@ -11,7 +11,7 @@ import com.umgsai.wx.backend.util.Converter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 

@@ -3,15 +3,11 @@ package com.umgsai.wx.backend.test;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
 import com.google.common.collect.Maps;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,7 +21,6 @@ import java.util.Objects;
  */
 //@MapperScan("com.umgsai.wx.backend.dao")
 //@SpringBootTest
-//@RunWith(SpringJUnit4ClassRunner.class)
 public class JiraTest {
 
     public static void writeTxt(String txtPath, String content) {

@@ -1,19 +1,16 @@
 package com.umgsai.wx.backend.dao;
 
 import com.umgsai.wx.backend.dao.data.ArticleDO;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.UUID;
 
 @MapperScan("com.umgsai.wx.backend.dao")
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 public class ArticleMapperTest {
 
     @Resource
@@ -26,6 +23,6 @@ public class ArticleMapperTest {
         articleDO.setArticleContent("xxxx");
         articleDO.setAuthor("shang");
         int insert = articleMapper.insert(articleDO);
-        Assert.assertTrue(insert > 0);
+        Assertions.assertTrue(insert > 0);
     }
 }

@@ -1,6 +1,6 @@
 package com.umgsai.wx.backend.util;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -31,7 +31,7 @@ public class Converter {
             return null;
         }
         try {
-            T t = tClass.newInstance();
+            T t = tClass.getDeclaredConstructor().newInstance();
             BeanUtils.copyProperties(o, t);
             return t;
         } catch (Exception e) {
@@ -46,7 +46,7 @@ public class Converter {
             return null;
         }
         try {
-            T t = tClass.newInstance();
+            T t = tClass.getDeclaredConstructor().newInstance();
             BeanUtils.copyProperties(o, t, ignoreProperties);
             return t;
         } catch (Exception e) {

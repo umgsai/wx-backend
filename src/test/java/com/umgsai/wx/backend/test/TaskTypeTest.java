@@ -4,18 +4,14 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mybatis.spring.annotation.MapperScan;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
 @Slf4j
 //@MapperScan("com.umgsai.wx.backend.dao")
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 public class TaskTypeTest {
 
 

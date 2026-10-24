@@ -42,8 +42,8 @@ public class AsyncConfig {
         public NamedThreadFactory(String prefix, boolean daemo) {
             mPrefix = prefix + "-thread-";
             mDaemo = daemo;
-            SecurityManager s = System.getSecurityManager();
-            mGroup = (s == null) ? Thread.currentThread().getThreadGroup() : s.getThreadGroup();
+            // JDK 24+ 已永久禁用 SecurityManager（JEP 486），System.getSecurityManager() 会抛异常
+            mGroup = Thread.currentThread().getThreadGroup();
         }
 
         @Override

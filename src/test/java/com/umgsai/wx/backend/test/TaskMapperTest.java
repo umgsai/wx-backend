@@ -1,8 +1,8 @@
 package com.umgsai.wx.backend.test;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
 import com.google.common.collect.Lists;
 import com.umgsai.wx.backend.dao.TaskMapper;
 import com.umgsai.wx.backend.dao.data.TaskData;
@@ -10,14 +10,12 @@ import com.umgsai.wx.backend.dao.data.TaskLogData;
 import com.umgsai.wx.backend.util.CommonDateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Sets;
-import org.junit.Test;
-import org.junit.platform.commons.util.StringUtils;
-import org.junit.runner.RunWith;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.io.*;
 import java.util.List;
 import java.util.Set;
@@ -32,7 +30,6 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @MapperScan("com.umgsai.wx.backend.dao")
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 public class TaskMapperTest {
 
     @Resource

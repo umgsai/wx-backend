@@ -2,13 +2,16 @@ package com.umgsai.wx.backend.config.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
+/**
+ * HandlerInterceptorAdapter 已在 Spring 6 移除，改为直接实现 HandlerInterceptor（含 default 方法）
+ */
 @Slf4j
-public class AuthInterceptor extends HandlerInterceptorAdapter {
+public class AuthInterceptor implements HandlerInterceptor {
 
 
     @Override
